@@ -1,10 +1,10 @@
-name: mypackage
+name: example
 description: A new Flutter package project.
 version: 0.0.1
 homepage:
 
 environment:
-  sdk: ">=2.12.0 <3.0.0"
+  sdk: ">=2.11.0 <3.0.0"
   flutter: ">=1.17.0"
 
 
@@ -14,6 +14,11 @@ dependencies:
     sdk: flutter
   q_ratio:
     path: ../
+  get: ^4.3.4
+  taav_ui:
+    git:
+      url: https://gitlab.com/salario/taav-ui.git
+      ref: dev
 
 dev_dependencies:
   flutter_test:

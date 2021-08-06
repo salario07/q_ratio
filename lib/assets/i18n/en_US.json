@@ -1,0 +1,13 @@
+{
+  "shared": {
+    "water": "Water",
+    "coffee": "Coffee",
+    "ratio": "Ratio"
+  },
+  "home_page": {
+    "start_timer": "Start Timer"
+  },
+  "timer_page": {
+    "timer": "Timer"
+  }
+}
