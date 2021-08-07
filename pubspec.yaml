@@ -25,20 +25,20 @@ dependencies:
     sdk: flutter
   get: ^4.3.4
 
-  taav_ui:
-    git:
-      url: https://gitlab.com/salario/taav-ui.git
-      ref: dev
 #  taav_ui:
-#    version: ^0.1.54
-#    hosted:
-#      name: taav_ui
-#      url: http://unpub.taavserver.ir:4000
-#  taav_bootstrap:
-#    version: ^0.0.1
-#    hosted:
-#      name: taav_bootstrap
-#      url: http://unpub.taavserver.ir:4000
+#    git:
+#      url: https://gitlab.com/salario/taav-ui.git
+#      ref: dev
+  taav_ui:
+    version: ^0.1.54
+    hosted:
+      name: taav_ui
+      url: http://unpub.taavserver.ir:4000
+  taav_bootstrap:
+    version: ^0.0.1
+    hosted:
+      name: taav_bootstrap
+      url: http://unpub.taavserver.ir:4000
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.

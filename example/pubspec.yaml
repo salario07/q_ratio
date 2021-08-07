@@ -15,10 +15,15 @@ dependencies:
   q_ratio:
     path: ../
   get: ^4.3.4
+#  taav_ui:
+#    git:
+#      url: https://gitlab.com/salario/taav-ui.git
+#      ref: dev
   taav_ui:
-    git:
-      url: https://gitlab.com/salario/taav-ui.git
-      ref: dev
+    version: ^0.1.54
+    hosted:
+      name: taav_ui
+      url: http://unpub.taavserver.ir:4000
 
 dev_dependencies:
   flutter_test:

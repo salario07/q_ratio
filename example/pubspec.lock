@@ -441,6 +441,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.0.0"
+  taav_bootstrap:
+    dependency: transitive
+    description:
+      name: taav_bootstrap
+      url: "http://unpub.taavserver.ir:4000"
+    source: hosted
+    version: "0.0.1"
   taav_data_connection_checker:
     dependency: transitive
     description:
@@ -451,11 +458,9 @@ packages:
   taav_ui:
     dependency: "direct main"
     description:
-      path: "."
-      ref: dev
-      resolved-ref: dac9dff6c725b87167579fe473cf3c6b8195f961
-      url: "https://gitlab.com/salario/taav-ui.git"
-    source: git
+      name: taav_ui
+      url: "http://unpub.taavserver.ir:4000"
+    source: hosted
     version: "0.1.55"
   term_glyph:
     dependency: transitive
