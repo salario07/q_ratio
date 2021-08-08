@@ -31,24 +31,4 @@ class MyApp extends StatelessWidget {
               child: TaavToast(child: child))),
     );
   }
-
-/*StyleData getTheme() {
-    return StyleData({
-      '${MyColors.themeName}-primaryColor': Colors.deepOrange,
-      '${MyColors.themeName}-secondaryColor': Colors.deepPurple,
-      '${MyColors.themeName}-accentColor': Colors.blue,
-      '${MyColors.themeName}-successColor': Colors.green,
-      '${MyColors.themeName}-infoColor': Colors.lightBlue,
-      '${MyColors.themeName}-warningColor': Colors.orange,
-      '${MyColors.themeName}-dangerColor': Colors.red,
-      '${MyColors.themeName}-disabledColor': Colors.green,
-      '${MyColors.themeName}-selectedColor': Colors.deepOrange,
-      '${MyColors.themeName}-normalColor': Colors.deepOrange,
-      '${MyColors.themeName}-fontFamilyPrimary': 'roboto',
-      '${MyColors.themeName}-fontFamilySecondary': 'roboto',
-      '${MyColors.themeName}-borderRadiusRectangle': 2.0,
-      '${MyColors.themeName}-borderRadiusRound': 2000.0,
-      '${MyColors.themeName}-borderRadiusSemiRound': 10.0,
-    });
-  }*/
 }
