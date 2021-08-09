@@ -14,6 +14,7 @@ class LocaleKeys {
   static const shared_coffee = 'shared_coffee';
   static const shared_ratio = 'shared_ratio';
   static const home_page_start_timer = 'home_page_start_timer';
+  static const home_page_grams = 'home_page_grams';
   static const timer_page_timer = 'timer_page_timer';
 }
 
@@ -23,6 +24,7 @@ class Locales {
     'shared_coffee': 'Coffee',
     'shared_ratio': 'Ratio',
     'home_page_start_timer': 'Start Timer',
+    'home_page_grams': 'grams',
     'timer_page_timer': 'Timer',
   };
 }

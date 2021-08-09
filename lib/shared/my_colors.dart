@@ -49,4 +49,8 @@ class MyColors {
     StyleData style = TaavThemeEngine.of(Get.context);
     return style.get('$themeName-selectedColor');
   }
+
+  static Color get backgroundColor {
+    return Color.fromARGB(255, 241, 241, 241);
+  }
 }

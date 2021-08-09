@@ -1,8 +1,11 @@
 library mypackage;
 
+import 'package:example/infrastructure/my_themes.dart';
 import 'package:flutter/material.dart';
 import 'package:example/infrastructure/localization_service.dart';
 import 'package:get/get.dart';
+import 'package:q_ratio/infrastructure/q_ratio_pages.dart';
+import 'package:q_ratio/infrastructure/q_ratio_routes.dart';
 import 'package:q_ratio/views/home_page.dart';
 import 'package:taav_ui/taav_ui.dart';
 import 'package:example/infrastructure/taav_theme_data.dart' as oldTheme;
@@ -23,12 +26,15 @@ class MyApp extends StatelessWidget {
       locale: LocalizationService.locales[0],
       fallbackLocale: LocalizationService.fallbackLocale,
       translations: LocalizationService(),
-      home: HomePage(),
+      initialRoute: QRatioRoutes.homePage,
+      getPages: QRatioPages.getPages(),
       builder: (context, child) => TaavTheme(
-          theme: TaavThemes.defaultLightTheme,
+          theme: MyThemes.defaultLightTheme,
           child: Theme(
               data: oldTheme.TaavTheme(fontFamily: 'Tahoma').themeData,
               child: TaavToast(child: child))),
     );
   }
+
+
 }

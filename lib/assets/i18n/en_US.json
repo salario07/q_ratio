@@ -5,7 +5,8 @@
     "ratio": "Ratio"
   },
   "home_page": {
-    "start_timer": "Start Timer"
+    "start_timer": "Start Timer",
+    "grams": "grams"
   },
   "timer_page": {
     "timer": "Timer"
