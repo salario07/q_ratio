@@ -8,7 +8,7 @@ import 'constants.dart';
 import 'dimens.dart';
 
 class Styles {
-  static const TaavWidgetShape buttonShape = TaavWidgetShape.semiRound;
+  static const TaavWidgetShape buttonShape = TaavWidgetShape.rectangle;
   static const TaavWidgetShape textFieldShape = TaavWidgetShape.semiRound;
   static const TaavWidgetShape dialogShape = TaavWidgetShape.semiRound;
 
@@ -143,5 +143,22 @@ class Styles {
     );
   }
 
+  static textFieldBorder() {
+    return OutlineInputBorder(
+        borderSide: BorderSide.none,
+        borderRadius:
+            BorderRadius.all(Radius.circular(Dimens.text_field_border_radius)));
+  }
 
+  static textFieldStyled(TaavTextField textField) {
+    return TaavTextFieldTheme(
+      themeData: TaavTextFieldThemeData(
+        focusedBorder: Styles.textFieldBorder(),
+        enabledBorder: Styles.textFieldBorder(),
+        errorBorder: Styles.textFieldBorder(),
+        disabledBorder: Styles.textFieldBorder(),
+      ),
+      child: textField,
+    );
+  }
 }

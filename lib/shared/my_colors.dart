@@ -53,4 +53,8 @@ class MyColors {
   static Color get backgroundColor {
     return Color.fromARGB(255, 241, 241, 241);
   }
+
+  static Color get dividerColor {
+    return Color.fromARGB(255, 232, 232, 232);
+  }
 }

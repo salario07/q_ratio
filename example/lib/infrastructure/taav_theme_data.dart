@@ -488,7 +488,7 @@ final ThemeData _taavThemeData = ThemeData(
       fontSize: 14,
       fontWeight: FontWeight.w400,
       fontStyle: FontStyle.normal,
-      fontFamily: 'IRANSans',
+      fontFamily: 'Roboto',
     ),
     padding: EdgeInsets.only(top: 4, bottom: 4, left: 4, right: 4),
     secondaryLabelStyle: TextStyle(

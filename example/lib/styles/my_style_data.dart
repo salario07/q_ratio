@@ -67,13 +67,13 @@ class MyStyleData {
       suffixTextStyle: 'textFieldFlat-prefixTextStyle',
       fillColor: TaavColors.white,
       iconColor: TaavColors.black.withOpacity(0.5),
-      enabledBorder: const BorderSide(
-        color: TaavColors.black54,
+      enabledBorder: BorderSide(
+        color: TaavColors.red[600],
         width: 1.0,
       ),
-      focusedBorder: const BorderSide(
-        color: TaavColors.black,
-        width: 2.0,
+      focusedBorder: BorderSide(
+        color: TaavColors.red[600],
+        width: 1.0,
       ),
       errorBorder: BorderSide(
         color: TaavColors.red[600],

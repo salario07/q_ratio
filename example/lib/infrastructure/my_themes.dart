@@ -18,7 +18,7 @@ class MyThemes {
   static final Color selectedColor = Colors.blueGrey.shade50;
   static const String fontFamilyPrimary = 'IRANSans';
   static const String fontFamilySecondary = 'IRANSans';
-  static const double borderRadiusRectangle = 2.0;
+  static const double borderRadiusRectangle = 8.0;
   static const double borderRadiusRound = 2000.0;
   static const double borderRadiusSemiRound = 10.0;
   static final defaultLightTheme = StyleData({})

@@ -6,7 +6,6 @@ import 'package:example/infrastructure/localization_service.dart';
 import 'package:get/get.dart';
 import 'package:q_ratio/infrastructure/q_ratio_pages.dart';
 import 'package:q_ratio/infrastructure/q_ratio_routes.dart';
-import 'package:q_ratio/views/home_page.dart';
 import 'package:taav_ui/taav_ui.dart';
 import 'package:example/infrastructure/taav_theme_data.dart' as oldTheme;
 
@@ -31,7 +30,7 @@ class MyApp extends StatelessWidget {
       builder: (context, child) => TaavTheme(
           theme: MyThemes.defaultLightTheme,
           child: Theme(
-              data: oldTheme.TaavTheme(fontFamily: 'Tahoma').themeData,
+              data: oldTheme.TaavTheme(fontFamily: 'Roboto').themeData,
               child: TaavToast(child: child))),
     );
   }

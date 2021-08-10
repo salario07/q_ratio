@@ -14,6 +14,7 @@ class Dimens {
   static const double huge_space = 32;
   static const double hugest_space = 40;
 
+  static const double text_field_border_radius = 8;
   static const double container_border_radius = 16;
   static const double attachment_border_radius = 12;
   static const double card_border_radius = 12;
