@@ -26,4 +26,6 @@ class Constants {
       SizedBox(width: Dimens.huge_space);
   static const SizedBox hugestHorizontalSpace =
       SizedBox(width: Dimens.hugest_space);
+
+  static const double ratioDefaultValue = 6;
 }

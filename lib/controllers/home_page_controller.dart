@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:q_ratio/infrastructure/q_ratio_routes.dart';
 import 'package:q_ratio/models/brew_view_model.dart';
+import 'package:q_ratio/shared/constants.dart';
 import 'package:q_ratio/shared/extensions.dart';
 
 class HomePageController extends GetxController {
   final TextEditingController coffeeController = TextEditingController(),
       waterController = TextEditingController(),
-      ratioController = TextEditingController();
+      ratioController =
+          TextEditingController(text: Constants.ratioDefaultValue.toString());
   BrewViewModel brewViewModel = BrewViewModel.defaultValue();
 
   void calculateWater() {
