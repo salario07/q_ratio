@@ -11,3 +11,11 @@ extension ToSafeDouble on String {
     }
   }
 }
+
+extension FormatTimerTime on int {
+  String formatTimer() {
+    int seconds = this % 60;
+    int minutes = (this - seconds) ~/ 60;
+    return '${minutes.toString().padLeft(2, "0")}:${seconds.toString().padLeft(2, "0")}';
+  }
+}

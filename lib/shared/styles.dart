@@ -9,6 +9,7 @@ import 'dimens.dart';
 
 class Styles {
   static const TaavWidgetShape buttonShape = TaavWidgetShape.rectangle;
+  static const TaavWidgetShape iconButtonShape = TaavWidgetShape.round;
   static const TaavWidgetShape textFieldShape = TaavWidgetShape.semiRound;
   static const TaavWidgetShape dialogShape = TaavWidgetShape.semiRound;
 
