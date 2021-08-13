@@ -10,20 +10,14 @@ class HomePageController extends GetxController {
   BrewViewModel brewViewModel = BrewViewModel(coffee: 0, ratio: 6, water: 0);
 
   void calculateWater() {
-    double ratio = 6;
-    double coffee = coffeeController.text.safeToDouble();
-    double water = coffee * ratio;
-    brewViewModel.coffee = coffee;
-    brewViewModel.water = water;
-    waterController.text = water.toStringAsFixed(0);
+    brewViewModel.coffee = coffeeController.text.safeToDouble();
+    brewViewModel.water = brewViewModel.coffee * brewViewModel.ratio;
+    waterController.text = brewViewModel.water.toStringAsFixed(0);
   }
 
   void calculateCoffee() {
-    double ratio = 6;
-    double water = waterController.text.safeToDouble();
-    double coffee = water / ratio;
-    brewViewModel.coffee = coffee;
-    brewViewModel.water = water;
-    coffeeController.text = coffee.toStringAsFixed(0);
+    brewViewModel.water = waterController.text.safeToDouble();
+    brewViewModel.coffee = brewViewModel.water / brewViewModel.ratio;
+    coffeeController.text = brewViewModel.coffee.toStringAsFixed(0);
   }
 }
