@@ -5,6 +5,7 @@ import 'package:q_ratio/shared/my_colors.dart';
 import 'package:q_ratio/shared/styles.dart';
 import 'package:taav_ui/taav_ui.dart';
 import 'package:get/get.dart';
+import 'package:q_ratio/shared/extensions.dart';
 
 import '../generated/locales.g.dart';
 
@@ -89,7 +90,7 @@ class HomePage extends GetView<HomePageController> {
       taavInputFormatter: TaavInputFormatter.digit,
       textAlign: TextAlign.center,
       showClearIcon: false,
-      onChanged: (value) => _onCoffeeChanged(),
+      onChanged: (value) => _onCoffeeChanged(value),
     );
   }
 
@@ -102,6 +103,7 @@ class HomePage extends GetView<HomePageController> {
       taavInputFormatter: TaavInputFormatter.digit,
       textAlign: TextAlign.center,
       showClearIcon: false,
+      onChanged: (value) => _onWaterChanged(value),
     );
   }
 
@@ -117,7 +119,17 @@ class HomePage extends GetView<HomePageController> {
     );
   }
 
-  void _onStartTimer() {}
+  void _onCoffeeChanged(String coffee) {
+    if (controller.brewViewModel.coffee.toStringAsFixed(0) != coffee) {
+      controller.calculateWater();
+    }
+  }
 
-  void _onCoffeeChanged() {}
+  void _onWaterChanged(String water) {
+    if (controller.brewViewModel.water.toStringAsFixed(0) != water) {
+      controller.calculateCoffee();
+    }
+  }
+
+  void _onStartTimer() {}
 }
