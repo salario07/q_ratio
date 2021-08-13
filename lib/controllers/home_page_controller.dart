@@ -8,8 +8,7 @@ class HomePageController extends GetxController {
   final TextEditingController coffeeController = TextEditingController(),
       waterController = TextEditingController(),
       ratioController = TextEditingController();
-  BrewViewModel brewViewModel =
-      BrewViewModel(coffee: 0.0.obs, ratio: 6, water: 0.0.obs);
+  BrewViewModel brewViewModel = BrewViewModel.defaultValue();
 
   void calculateWater() {
     brewViewModel.coffee(coffeeController.text.safeToDouble());
@@ -25,7 +24,7 @@ class HomePageController extends GetxController {
 
   void navigateToTimerPage() {
     Get.toNamed(
-      QRatioRoutes.timerPage,
+      QRatioRoutes.homePage + QRatioRoutes.timerPage,
       arguments: [
         brewViewModel.ratio,
         brewViewModel.coffee(),

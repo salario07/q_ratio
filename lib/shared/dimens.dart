@@ -9,7 +9,7 @@ class Dimens {
 
   static const double tiny_space = 4;
   static const double small_space = 8;
-  static const double normal_space = 16;
+  static const double medium_space = 16;
   static const double large_space = 24;
   static const double huge_space = 32;
   static const double hugest_space = 40;
@@ -20,7 +20,7 @@ class Dimens {
   static const double card_border_radius = 12;
   static const double scroll_bar_radius = 20;
 
-  static const double elevation = 5;
+  static const double elevation = 2;
 
   static const double circular_progress_indicator_size_large = 40;
 

@@ -41,33 +41,49 @@ class TimerPage extends GetView<TimerPageController> {
       shape: Styles.cardShape(),
       margin: EdgeInsets.zero,
       elevation: Dimens.elevation,
-      child: _infoContent(),
+      child: Padding(padding: EdgeInsets.all(16), child: _infoContent()),
     );
   }
 
   Widget _infoContent() {
     return Column(children: [
-      _infoItem(LocaleKeys.shared_ratio.tr, controller.brewViewModel.ratio),
-      Constants.smallVerticalSpace,
+      _infoItem(LocaleKeys.shared_ratio.tr, controller.brewViewModel.ratio,
+          showGrams: false),
+      Constants.mediumVerticalSpace,
       _infoItem(LocaleKeys.shared_coffee.tr, controller.brewViewModel.coffee()),
-      Constants.smallVerticalSpace,
+      Constants.mediumVerticalSpace,
       _infoItem(LocaleKeys.shared_water.tr, controller.brewViewModel.water()),
     ]);
   }
 
-  Widget _infoItem(String label, double value) {
+  Widget _infoItem(String label, double value, {bool showGrams = true}) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        TaavText.caption1(label),
+        TaavText.button(label),
         Expanded(
           child: Align(
             alignment: AlignmentDirectional.centerEnd,
-            child: TaavText.body2(value.toStringAsFixed(0)),
+            child: _infoValue(value, showGrams),
           ),
         )
       ],
     );
+  }
+
+  Widget _infoValue(double value, bool showGrams) {
+    if (showGrams) {
+      return Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          TaavText.subtitle1(value.toStringAsFixed(0)),
+          Constants.smallHorizontalSpace,
+          TaavText.caption2(LocaleKeys.home_page_grams.tr)
+        ],
+      );
+    } else {
+      return TaavText.subtitle1(value.toStringAsFixed(0));
+    }
   }
 
   Widget _buttons() {

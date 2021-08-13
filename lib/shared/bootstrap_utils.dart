@@ -115,7 +115,7 @@ class BootstrapUtils {
     colXs: 12,
   );
   static TaavDiv normalVerticalDiv = TaavDiv(
-    childXs: () => Constants.normalVerticalSpace,
+    childXs: () => Constants.mediumVerticalSpace,
     colXs: 12,
   );
   static TaavDiv largeVerticalDiv = TaavDiv(
@@ -165,7 +165,7 @@ class BootstrapUtils {
       colXs: showXs ? 12 : 0,
       colMd: showMd ? 12 : 0,
       colXl: showXl ? 12 : 0,
-      childXs: () => Constants.normalVerticalSpace,
+      childXs: () => Constants.mediumVerticalSpace,
     );
   }
 
