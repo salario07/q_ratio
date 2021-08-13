@@ -6,7 +6,6 @@ import 'package:q_ratio/shared/styles.dart';
 import 'package:taav_ui/taav_ui.dart';
 import 'package:get/get.dart';
 import 'package:q_ratio/shared/extensions.dart';
-
 import '../generated/locales.g.dart';
 
 class HomePage extends GetView<HomePageController> {
@@ -15,13 +14,11 @@ class HomePage extends GetView<HomePageController> {
   @override
   Widget build(BuildContext context) {
     return TaavScaffold(
-      backgroundColor: MyColors.backgroundColor,
-      showBorder: false,
-      body: _body(),
-      padding: EdgeInsets.zero,
-      contentPadding: EdgeInsets.symmetric(vertical: 16, horizontal: 24),
-      isResponsive: true,
-    );
+        backgroundColor: MyColors.backgroundColor,
+        showBorder: false,
+        body: _body(),
+        padding: EdgeInsets.zero,
+        contentPadding: EdgeInsets.symmetric(vertical: 16, horizontal: 24));
   }
 
   SafeArea _body() {
@@ -38,6 +35,7 @@ class HomePage extends GetView<HomePageController> {
               _item(LocaleKeys.shared_water.tr, _waterTextField(), true),
             ],
           )),
+          Constants.largeVerticalSpace,
           _startTimeButton()
         ],
       ),
@@ -51,12 +49,15 @@ class HomePage extends GetView<HomePageController> {
     );
   }
 
-  TaavButton _startTimeButton() {
-    return TaavButton.filled(
-      label: LocaleKeys.home_page_start_timer.tr,
-      onTap: _onStartTimer,
-      fillParent: true,
-      shape: Styles.buttonShape,
+  Widget _startTimeButton() {
+    return Obx(
+      () => TaavButton.filled(
+          label: LocaleKeys.home_page_start_timer.tr,
+          onTap: controller.navigateToTimerPage,
+          fillParent: true,
+          shape: Styles.buttonShape,
+          isDisabled: controller.brewViewModel.coffee() == 0.0 ||
+              controller.brewViewModel.water() == 0.0),
     );
   }
 
@@ -109,14 +110,17 @@ class HomePage extends GetView<HomePageController> {
 
   Widget _ratioTextField() {
     return TaavTextField.flat(
-      controller: controller.ratioController,
-      shape: Styles.textFieldShape,
-      disableScrollbar: true,
-      maxLength: 4,
-      taavInputFormatter: TaavInputFormatter.digit,
-      textAlign: TextAlign.center,
-      showClearIcon: false,
-    );
+        controller: controller.ratioController,
+        shape: Styles.textFieldShape,
+        disableScrollbar: true,
+        maxLength: 4,
+        taavInputFormatter: TaavInputFormatter.digit,
+        textAlign: TextAlign.center,
+        showClearIcon: false,
+        onChanged: (value) {
+          controller.brewViewModel.ratio = value.safeToDouble();
+          controller.calculateWater();
+        });
   }
 
   void _onCoffeeChanged(String coffee) {
@@ -130,6 +134,4 @@ class HomePage extends GetView<HomePageController> {
       controller.calculateCoffee();
     }
   }
-
-  void _onStartTimer() {}
 }

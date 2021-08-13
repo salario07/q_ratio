@@ -10,13 +10,15 @@ class QRatioPages {
   static List<GetPage> getPages() {
     return [
       GetPage(
-          name: QRatioRoutes.homePage,
-          page: () => HomePage(),
-          binding: HomePageBinding()),
+        name: QRatioRoutes.homePage,
+        page: () => HomePage(),
+        binding: HomePageBinding(),
+      ),
       GetPage(
-          name: QRatioRoutes.homePage,
-          page: () => TimerPage(),
-          binding: TimerPageBinding()),
+        name: QRatioRoutes.homePage,
+        page: () => TimerPage(),
+        binding: TimerPageBinding(),
+      )
     ];
   }
 }

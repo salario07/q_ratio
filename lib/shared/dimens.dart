@@ -20,7 +20,7 @@ class Dimens {
   static const double card_border_radius = 12;
   static const double scroll_bar_radius = 20;
 
-  static const double elevation = 0;
+  static const double elevation = 5;
 
   static const double circular_progress_indicator_size_large = 40;
 

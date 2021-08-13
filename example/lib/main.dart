@@ -34,6 +34,4 @@ class MyApp extends StatelessWidget {
               child: TaavToast(child: child))),
     );
   }
-
-
 }
