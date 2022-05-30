@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:q_ratio/models/shared/enum/screen_size.dart';
-import 'package:taav_bootstrap/taav_bootstrap.dart';
-
-import 'constants.dart';
 
 class BootstrapUtils {
   static const double _smallWidth = 540.0;
@@ -106,89 +103,6 @@ class BootstrapUtils {
     return BoxConstraints(maxWidth: Get.width * widthFactor);
   }
 
-  static TaavDiv tinyVerticalDiv = TaavDiv(
-    childXs: () => Constants.tinyVerticalSpace,
-    colXs: 12,
-  );
-  static TaavDiv smallVerticalDiv = TaavDiv(
-    childXs: () => Constants.smallVerticalSpace,
-    colXs: 12,
-  );
-  static TaavDiv normalVerticalDiv = TaavDiv(
-    childXs: () => Constants.mediumVerticalSpace,
-    colXs: 12,
-  );
-  static TaavDiv largeVerticalDiv = TaavDiv(
-    childXs: () => Constants.largeVerticalSpace,
-    colXs: 12,
-  );
-  static TaavDiv hugeVerticalDiv = TaavDiv(
-    childXs: () => Constants.hugeVerticalSpace,
-    colXs: 12,
-  );
-
-  static TaavDiv divDesiredVerticalSpace(double verticalSpace,
-      {bool showXs = false, bool showMd = false, bool showXl = false}) {
-    return TaavDiv(
-      colXs: showXs ? 12 : 0,
-      colMd: showMd ? 12 : 0,
-      colXl: showXl ? 12 : 0,
-      childXs: () => SizedBox(
-        height: verticalSpace,
-      ),
-    );
-  }
-
-  static TaavDiv divTinyVerticalSpace(
-      {bool showXs = false, bool showMd = false, bool showXl = false}) {
-    return TaavDiv(
-      colXs: showXs ? 12 : 0,
-      colMd: showMd ? 12 : 0,
-      colXl: showXl ? 12 : 0,
-      childXs: () => Constants.tinyVerticalSpace,
-    );
-  }
-
-  static TaavDiv divSmallVerticalSpace(
-      {bool showXs = false, bool showMd = false, bool showXl = false}) {
-    return TaavDiv(
-      colXs: showXs ? 12 : 0,
-      colMd: showMd ? 12 : 0,
-      colXl: showXl ? 12 : 0,
-      childXs: () => Constants.smallVerticalSpace,
-    );
-  }
-
-  static TaavDiv divNormalVerticalSpace(
-      {bool showXs = false, bool showMd = false, bool showXl = false}) {
-    return TaavDiv(
-      colXs: showXs ? 12 : 0,
-      colMd: showMd ? 12 : 0,
-      colXl: showXl ? 12 : 0,
-      childXs: () => Constants.mediumVerticalSpace,
-    );
-  }
-
-  static TaavDiv divLargeVerticalSpace(
-      {bool showXs = false, bool showMd = false, bool showXl = false}) {
-    return TaavDiv(
-      colXs: showXs ? 12 : 0,
-      colMd: showMd ? 12 : 0,
-      colXl: showXl ? 12 : 0,
-      childXs: () => Constants.largeVerticalSpace,
-    );
-  }
-
-  static TaavDiv divHugeVerticalSpace(
-      {bool showXs = false, bool showMd = false, bool showXl = false}) {
-    return TaavDiv(
-      colXs: showXs ? 12 : 0,
-      colMd: showMd ? 12 : 0,
-      colXl: showXl ? 12 : 0,
-      childXs: () => Constants.hugeVerticalSpace,
-    );
-  }
-
   static Widget divPadding(
       {double end = 0, double start = 0, @required Widget child}) {
     return Padding(
@@ -197,16 +111,6 @@ class BootstrapUtils {
         start: start,
       ),
       child: child,
-    );
-  }
-
-  static Widget divIndexTwoColumn(
-      {@required Widget child, @required int index}) {
-    return TaavDiv(
-      childXs: () => child,
-      childMd: () => paddingTwoColumn(child: child, index: index),
-      colXs: 12,
-      colMd: 6,
     );
   }
 

@@ -1,14 +1,11 @@
 library mypackage;
 
-import 'package:example/infrastructure/my_themes.dart';
 import 'package:flutter/material.dart';
 import 'package:example/infrastructure/localization_service.dart';
 import 'package:get/get.dart';
 import 'package:q_ratio/infrastructure/bindings/home_page_binding.dart';
 import 'package:q_ratio/infrastructure/q_ratio_pages.dart';
 import 'package:q_ratio/infrastructure/q_ratio_routes.dart';
-import 'package:taav_ui/taav_ui.dart';
-import 'package:example/infrastructure/taav_theme_data.dart' as oldTheme;
 
 void main() {
   runApp(MyApp());
@@ -34,11 +31,7 @@ class MyApp extends StatelessWidget {
       onUnknownRoute: (RouteSettings settings) {
         return _unknownPage(settings);
       },
-      builder: (context, child) => TaavTheme(
-          theme: MyThemes.defaultLightTheme,
-          child: Theme(
-              data: oldTheme.TaavTheme(fontFamily: 'Roboto').themeData,
-              child: TaavToast(child: child))),
+      builder: (context, child) => child,
     );
   }
 

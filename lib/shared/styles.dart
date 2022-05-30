@@ -1,20 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:taav_ui/taav_ui.dart';
 
 import 'bootstrap_utils.dart';
 import 'constants.dart';
 import 'dimens.dart';
 
 class Styles {
-  static const TaavWidgetShape buttonShape = TaavWidgetShape.rectangle;
-  static const TaavWidgetShape iconButtonShape = TaavWidgetShape.round;
-  static const TaavWidgetShape textFieldShape = TaavWidgetShape.semiRound;
-  static const TaavWidgetShape dialogShape = TaavWidgetShape.semiRound;
-
-  static const TaavWidgetSize fabSize = TaavWidgetSize.large;
-  static const TaavWidgetSize fabSmallSize = TaavWidgetSize.medium;
 
   static EdgeInsets getResponsiveButtonPadding(bool isWeb) {
     return isWeb ? getHugestButtonPadding() : getLargeButtonPadding();
@@ -149,17 +141,5 @@ class Styles {
         borderSide: BorderSide.none,
         borderRadius:
             BorderRadius.all(Radius.circular(Dimens.text_field_border_radius)));
-  }
-
-  static textFieldStyled(TaavTextField textField) {
-    return TaavTextFieldTheme(
-      themeData: TaavTextFieldThemeData(
-        focusedBorder: Styles.textFieldBorder(),
-        enabledBorder: Styles.textFieldBorder(),
-        errorBorder: Styles.textFieldBorder(),
-        disabledBorder: Styles.textFieldBorder(),
-      ),
-      child: textField,
-    );
   }
 }

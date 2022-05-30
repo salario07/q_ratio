@@ -18,15 +18,7 @@ dependencies:
     path: ../
 
   get: ^4.3.7
-#  taav_ui:
-#    git:
-#      url: https://gitlab.com/salario/taav-ui.git
-#      ref: dev
-  taav_ui:
-    version: ^0.1.54
-    hosted:
-      name: taav_ui
-      url: http://unpub.taavserver.ir:4000
+
 
 dev_dependencies:
   flutter_test:

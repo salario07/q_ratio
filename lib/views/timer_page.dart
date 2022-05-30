@@ -3,9 +3,7 @@ import 'package:q_ratio/controllers/timer_page_controller.dart';
 import 'package:q_ratio/generated/locales.g.dart';
 import 'package:q_ratio/shared/constants.dart';
 import 'package:q_ratio/shared/dimens.dart';
-import 'package:q_ratio/shared/my_colors.dart';
 import 'package:q_ratio/shared/styles.dart';
-import 'package:taav_ui/taav_ui.dart';
 import 'package:get/get.dart';
 import 'package:q_ratio/shared/extensions.dart';
 
@@ -14,32 +12,32 @@ class TimerPage extends GetView<TimerPageController> {
 
   @override
   Widget build(BuildContext context) {
-    return TaavScaffold(
-        backgroundColor: MyColors.backgroundColor,
-        showBorder: false,
-        body: _body(),
-        padding: EdgeInsets.zero,
-        contentPadding: EdgeInsets.symmetric(vertical: 24, horizontal: 24));
+    return Scaffold(
+      body: _body(),
+    );
   }
 
   Widget _body() {
     return SafeArea(
-      child: Column(
-        children: [
-          _infoCard(),
-          Expanded(
-              child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              TaavText.body2(LocaleKeys.timer_page_timer.tr),
-              Constants.smallVerticalSpace,
-              Obx(() =>
-                  TaavText.heading3(controller.timerTime().formatTimer())),
-            ],
-          )),
-          Constants.largeVerticalSpace,
-          _buttons()
-        ],
+      child: Padding(
+        padding: EdgeInsets.symmetric(vertical: 24, horizontal: 24),
+        child: Column(
+          children: [
+            _infoCard(),
+            Expanded(
+                child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(LocaleKeys.timer_page_timer.tr),
+                Constants.smallVerticalSpace,
+                Obx(() =>
+                    Text(controller.timerTime().formatTimer())),
+              ],
+            )),
+            Constants.largeVerticalSpace,
+            _buttons()
+          ],
+        ),
       ),
     );
   }
@@ -68,7 +66,7 @@ class TimerPage extends GetView<TimerPageController> {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        TaavText.button(label),
+        Text(label),
         Expanded(
           child: Align(
             alignment: AlignmentDirectional.centerEnd,
@@ -84,13 +82,13 @@ class TimerPage extends GetView<TimerPageController> {
       return Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          TaavText.subtitle1(value.toStringAsFixed(0)),
+          Text(value.toStringAsFixed(0)),
           Constants.smallHorizontalSpace,
-          TaavText.caption2(LocaleKeys.home_page_grams.tr)
+    Text(LocaleKeys.home_page_grams.tr)
         ],
       );
     } else {
-      return TaavText.subtitle1(value.toStringAsFixed(0));
+      return Text(value.toStringAsFixed(0));
     }
   }
 
@@ -107,35 +105,29 @@ class TimerPage extends GetView<TimerPageController> {
   }
 
   Widget _backButton() {
-    return TaavIconButton.outline(
-      icon: Icons.arrow_back_rounded,
-      onTap: () => Get.back(),
-      shape: Styles.iconButtonShape,
-      size: TaavWidgetSize.large,
+    return IconButton(
+      icon: Icon(Icons.arrow_back_rounded),
+      onPressed: () => Get.back(),
     );
   }
 
   Widget _pausePlayButton() {
     return Obx(
-      () => TaavIconButton.filled(
-        icon: controller.isPaused()
+      () => IconButton(
+        icon: Icon(controller.isPaused()
             ? Icons.play_arrow_rounded
-            : Icons.pause_rounded,
-        onTap: () => controller.isPaused()
+            : Icons.pause_rounded),
+        onPressed: () => controller.isPaused()
             ? controller.playTimer()
             : controller.pauseTimer(),
-        shape: Styles.iconButtonShape,
-        size: TaavWidgetSize.giant,
       ),
     );
   }
 
   Widget _resetButton() {
-    return TaavIconButton.outline(
-      icon: Icons.replay_rounded,
-      onTap: controller.resetTimer,
-      shape: Styles.iconButtonShape,
-      size: TaavWidgetSize.large,
+    return IconButton(
+      icon: Icon(Icons.replay_rounded),
+      onPressed: controller.resetTimer,
     );
   }
 }

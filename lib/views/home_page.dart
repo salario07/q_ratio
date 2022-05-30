@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:q_ratio/controllers/home_page_controller.dart';
 import 'package:q_ratio/shared/constants.dart';
-import 'package:q_ratio/shared/my_colors.dart';
-import 'package:q_ratio/shared/styles.dart';
-import 'package:taav_ui/taav_ui.dart';
 import 'package:get/get.dart';
 import 'package:q_ratio/shared/extensions.dart';
 import '../generated/locales.g.dart';
@@ -13,110 +10,97 @@ class HomePage extends GetView<HomePageController> {
 
   @override
   Widget build(BuildContext context) {
-    return TaavScaffold(
-        backgroundColor: MyColors.backgroundColor,
-        showBorder: false,
-        body: _body(),
-        padding: EdgeInsets.zero,
-        contentPadding: EdgeInsets.symmetric(vertical: 16, horizontal: 24));
+    return Scaffold(
+      body: _body(),
+    );
   }
 
   SafeArea _body() {
     return SafeArea(
-      child: Column(
-        children: [
-          Expanded(
-              child: Column(
-            children: [
-              _item(LocaleKeys.shared_ratio.tr, _ratioTextField(), false),
-              _divider(),
-              _item(LocaleKeys.shared_coffee.tr, _coffeeTextField(), true),
-              _divider(),
-              _item(LocaleKeys.shared_water.tr, _waterTextField(), true),
-            ],
-          )),
-          Constants.largeVerticalSpace,
-          _startTimeButton()
-        ],
+      child: Padding(
+        padding: EdgeInsets.symmetric(vertical: 16, horizontal: 24),
+        child: Column(
+          children: [
+            Expanded(
+                child: Column(
+              children: [
+                _item(LocaleKeys.shared_ratio.tr, _ratioTextField(), false),
+                _divider(),
+                _item(LocaleKeys.shared_coffee.tr, _coffeeTextField(), true),
+                _divider(),
+                _item(LocaleKeys.shared_water.tr, _waterTextField(), true),
+              ],
+            )),
+            Constants.largeVerticalSpace,
+            _startTimeButton()
+          ],
+        ),
       ),
     );
   }
 
   Widget _divider() {
-    return TaavDivider(
-      color: MyColors.dividerColor,
+    return Divider(
       thickness: 1,
     );
   }
 
   Widget _startTimeButton() {
     return Obx(
-      () => TaavButton.filled(
-          label: LocaleKeys.home_page_start_timer.tr,
-          onTap: controller.navigateToTimerPage,
-          fillParent: true,
-          shape: Styles.buttonShape,
-          isDisabled: controller.brewViewModel.coffee() == 0.0 ||
-              controller.brewViewModel.water() == 0.0),
+      () => ElevatedButton(
+        child: Text(LocaleKeys.home_page_start_timer.tr),
+        onPressed: controller.brewViewModel.coffee() == 0.0 ||
+                controller.brewViewModel.water() == 0.0
+            ? null
+            : controller.navigateToTimerPage,
+      ),
     );
   }
 
-  Widget _item(String title, TaavTextField textField, bool showGrams) {
+  Widget _item(String title, TextField textField, bool showGrams) {
     return Flexible(
       fit: FlexFit.tight,
       flex: 1,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          TaavText.heading6(title),
+          Text(title),
           Constants.tinyVerticalSpace,
           Container(
             alignment: Alignment.center,
             width: Get.width / 3,
-            child: Styles.textFieldStyled(textField),
+            child: textField,
           ),
           if (showGrams) Constants.tinyVerticalSpace,
-          if (showGrams) TaavText.body2(LocaleKeys.home_page_grams.tr),
+          if (showGrams) Text(LocaleKeys.home_page_grams.tr),
         ],
       ),
     );
   }
 
   Widget _coffeeTextField() {
-    return TaavTextField.flat(
+    return TextField(
       controller: controller.coffeeController,
-      shape: Styles.textFieldShape,
-      disableScrollbar: true,
       maxLength: 4,
-      taavInputFormatter: TaavInputFormatter.digit,
       textAlign: TextAlign.center,
-      showClearIcon: false,
       onChanged: (value) => _onCoffeeChanged(value),
     );
   }
 
   Widget _waterTextField() {
-    return TaavTextField.flat(
+    return TextField(
       controller: controller.waterController,
-      shape: Styles.textFieldShape,
-      disableScrollbar: true,
       maxLength: 4,
-      taavInputFormatter: TaavInputFormatter.digit,
       textAlign: TextAlign.center,
-      showClearIcon: false,
       onChanged: (value) => _onWaterChanged(value),
     );
   }
 
   Widget _ratioTextField() {
-    return TaavTextField.flat(
+    return TextField(
         controller: controller.ratioController,
-        shape: Styles.textFieldShape,
-        disableScrollbar: true,
         maxLength: 4,
-        taavInputFormatter: TaavInputFormatter.digit,
         textAlign: TextAlign.center,
-        showClearIcon: false,
         onChanged: (value) {
           controller.brewViewModel.ratio = value.safeToDouble();
           controller.calculateWater();
