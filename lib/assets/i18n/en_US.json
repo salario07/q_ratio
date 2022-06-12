@@ -2,13 +2,22 @@
   "shared": {
     "water": "Water",
     "coffee": "Coffee",
-    "ratio": "Ratio"
+    "ratio": "Ratio",
+    "save": "Save",
+    "cancel": "Cancel"
   },
   "home_page": {
-    "start_timer": "Start Timer",
-    "grams": "grams"
+    "start_brew": "Start Brew",
+    "grams": "gr",
+    "please_enter_ratio": "Please enter ratio",
+    "coffee_grams_to_water_grams": "Coffee(gr) : Water(gr)",
+    "water_kilograms_to_coffee_grams": "Water(kg) : Coffee(gr)",
+    "ratio_type": "Ratio type"
   },
   "timer_page": {
-    "timer": "Timer"
+    "timer": "Timer",
+    "kg_gr": "kg : gr",
+    "gr_gr": "gr : gr",
+    "total_weight": "Total weight"
   }
 }

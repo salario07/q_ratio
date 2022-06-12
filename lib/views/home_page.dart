@@ -15,28 +15,27 @@ class HomePage extends GetView<HomePageController> {
     );
   }
 
-  SafeArea _body() {
+  Widget _body() {
     return SafeArea(
-      child: Padding(
-        padding: EdgeInsets.symmetric(vertical: 16, horizontal: 24),
-        child: Column(
-          children: [
-            Expanded(
-                child: Column(
-              children: [
-                _item(LocaleKeys.shared_ratio.tr, _ratioTextField(), false),
-                _divider(),
-                _item(LocaleKeys.shared_coffee.tr, _coffeeTextField(), true),
-                _divider(),
-                _item(LocaleKeys.shared_water.tr, _waterTextField(), true),
-              ],
-            )),
-            Constants.largeVerticalSpace,
-            _startTimeButton()
-          ],
-        ),
+        child: Padding(
+      padding: EdgeInsets.symmetric(vertical: 16, horizontal: 24),
+      child: Column(
+        children: [
+          Expanded(
+              child: Column(
+            children: [
+              _item(LocaleKeys.shared_ratio.tr, _ratioTextField(), false),
+              _divider(),
+              _item(LocaleKeys.shared_coffee.tr, _coffeeTextField(), true),
+              _divider(),
+              _item(LocaleKeys.shared_water.tr, _waterTextField(), true),
+            ],
+          )),
+          Constants.largeVerticalSpace,
+          _startTimeButton()
+        ],
       ),
-    );
+    ));
   }
 
   Widget _divider() {
@@ -46,36 +45,33 @@ class HomePage extends GetView<HomePageController> {
   }
 
   Widget _startTimeButton() {
-    return Obx(
-      () => ElevatedButton(
-        child: Text(LocaleKeys.home_page_start_timer.tr),
-        onPressed: controller.brewViewModel.coffee() == 0.0 ||
-                controller.brewViewModel.water() == 0.0
-            ? null
-            : controller.navigateToTimerPage,
-      ),
-    );
+    return Obx(() => ElevatedButton(
+          child: Text(LocaleKeys.home_page_start_brew.tr),
+          onPressed: double.tryParse(controller.coffeeController.text) == 0.0 ||
+                  double.tryParse(controller.waterController.text) == 0.0
+              ? null
+              : controller.navigateToTimerPage,
+        ));
   }
 
   Widget _item(String title, TextField textField, bool showGrams) {
     return Flexible(
-      fit: FlexFit.tight,
-      flex: 1,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(title),
-          Constants.tinyVerticalSpace,
-          Container(
-            alignment: Alignment.center,
-            width: Get.width / 3,
-            child: textField,
-          ),
-          if (showGrams) Constants.tinyVerticalSpace,
-          if (showGrams) Text(LocaleKeys.home_page_grams.tr),
-        ],
-      ),
-    );
+        fit: FlexFit.tight,
+        flex: 1,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(title),
+            Constants.tinyVerticalSpace,
+            Container(
+              alignment: Alignment.center,
+              width: Get.width / 3,
+              child: textField,
+            ),
+            if (showGrams) Constants.tinyVerticalSpace,
+            if (showGrams) Text(LocaleKeys.home_page_grams.tr),
+          ],
+        ));
   }
 
   Widget _coffeeTextField() {
@@ -98,24 +94,33 @@ class HomePage extends GetView<HomePageController> {
 
   Widget _ratioTextField() {
     return TextField(
-        controller: controller.ratioController,
-        maxLength: 4,
-        textAlign: TextAlign.center,
-        onChanged: (value) {
-          controller.brewViewModel.ratio = value.safeToDouble();
-          controller.calculateWater();
-        });
+      controller: controller.ratioController,
+      maxLength: 4,
+      textAlign: TextAlign.center,
+      onChanged: (value) => _onRatioChanged(value),
+    );
   }
 
   void _onCoffeeChanged(String coffee) {
-    if (controller.brewViewModel.coffee.toStringAsFixed(0) != coffee) {
+    if (controller.getBrew().coffee().toOneDigitDecimal() != coffee) {
+      controller
+          .getBrew()
+          .coffee(controller.coffeeController.text.safeToDouble());
       controller.calculateWater();
     }
   }
 
   void _onWaterChanged(String water) {
-    if (controller.brewViewModel.water.toStringAsFixed(0) != water) {
+    if (controller.getBrew().water().toNoDigitDecimal() != water) {
+      controller
+          .getBrew()
+          .water(controller.waterController.text.safeToDouble());
       controller.calculateCoffee();
     }
+  }
+
+  void _onRatioChanged(String ratio) {
+    controller.getBrew().ratio(ratio.safeToDouble());
+    controller.calculateWater();
   }
 }

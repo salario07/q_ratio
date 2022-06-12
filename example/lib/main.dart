@@ -3,11 +3,13 @@ library mypackage;
 import 'package:flutter/material.dart';
 import 'package:example/infrastructure/localization_service.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:q_ratio/infrastructure/bindings/home_page_binding.dart';
 import 'package:q_ratio/infrastructure/q_ratio_pages.dart';
 import 'package:q_ratio/infrastructure/q_ratio_routes.dart';
 
-void main() {
+void main()async {
+  await GetStorage.init();
   runApp(MyApp());
 }
 

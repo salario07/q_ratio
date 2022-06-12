@@ -27,5 +27,13 @@ class Constants {
   static const SizedBox hugestHorizontalSpace =
       SizedBox(width: Dimens.hugest_space);
 
-  static const double ratioDefaultValue = 6;
+  static const double ratioByGramDefaultValue = 16;
+  static const double ratioByKilogramDefaultValue = 50;
+
+  static const int ratioTypeGram = 1;
+  static const int ratioTypeKilogram = 2;
+
+  static const int addMinusDelayMilliseconds = 150;
+
+  static const String ratioType = 'ratioType';
 }

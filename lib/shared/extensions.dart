@@ -19,3 +19,13 @@ extension FormatTimerTime on int {
     return '${minutes.toString().padLeft(2, "0")}:${seconds.toString().padLeft(2, "0")}';
   }
 }
+
+
+extension FormatDecimalUtils on double {
+  String toOneDigitDecimal() {
+    return this.toStringAsFixed(1).endsWith('0')?this.toStringAsFixed(0):this.toStringAsFixed(1);
+  }
+  String toNoDigitDecimal() {
+    return this.toStringAsFixed(0);
+  }
+}
