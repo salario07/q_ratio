@@ -35,9 +35,11 @@ class TimerPageController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    brewViewModel.ratio(Get.arguments[0]);
-    brewViewModel.coffee(Get.arguments[1]);
-    brewViewModel.water(Get.arguments[2]);
+    if (Get.arguments != null) {
+      brewViewModel.ratio.value = Get.arguments?.first ?? 0;
+      brewViewModel.coffee.value = Get.arguments?.elementAt(1) ?? 0;
+      brewViewModel.water.value = Get.arguments?.elementAt(2) ?? 0;
+    }
     _startTimer();
   }
 }

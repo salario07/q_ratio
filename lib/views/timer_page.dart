@@ -20,48 +20,41 @@ class TimerPage extends GetView<TimerPageController> {
   }
 
   Widget _body() {
-    return SafeArea(
-      child: Padding(
-        padding: EdgeInsets.symmetric(vertical: 24, horizontal: 24),
-        child: Column(
-          children: [
-            _infoCard(),
-            Expanded(
-                child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(LocaleKeys.timer_page_timer.tr),
-                Constants.smallVerticalSpace,
-                Obx(() =>
-                    Text(controller.timerTime().formatTimer())),
-              ],
-            )),
-            Constants.largeVerticalSpace,
-            _buttons()
-          ],
-        ),
-    ));
+    return Padding(
+      padding: const EdgeInsets.all(24),
+      child: Column(
+        children: [
+          _infoCard(),
+          Expanded(
+              child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(LocaleKeys.timer_page_timer.tr),
+              Constants.smallVerticalSpace,
+              Obx(() =>
+                  Text(controller.timerTime.value.formatTimer())),
+            ],
+          )),
+          Constants.largeVerticalSpace,
+          _buttons()
+        ],
+      ),
+    );
   }
 
   Widget _infoCard() {
-    return Bootstrap(
-      children: [
-        Div(
-          childXs: () => Card(
-            shape: Styles.cardShape(),
-            margin: EdgeInsets.zero,
-            elevation: Dimens.elevation,
-            child: Padding(
-                padding: EdgeInsets.symmetric(vertical: 24, horizontal: 16),
-                child: _infoContent()),
-          ),
-          colXs: 11,
-          colSm: 10,
-          colMd: 8,
-          colLg: 6,
-          colXl: 4,
-        )
-      ],
+    return Center(
+      child: ConstrainedBox(
+        constraints: BoxConstraints(maxWidth: 600),
+        child: Card(
+          shape: Styles.cardShape(),
+          margin: EdgeInsets.zero,
+          elevation: Dimens.elevation,
+          child: Padding(
+              padding: EdgeInsets.symmetric(vertical: 24, horizontal: 16),
+              child: _infoContent()),
+        ),
+      ),
     );
   }
 

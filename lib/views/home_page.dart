@@ -45,13 +45,20 @@ class HomePage extends GetView<HomePageController> {
   }
 
   Widget _startTimeButton() {
-    return Obx(() => ElevatedButton(
+    return ValueListenableBuilder<TextEditingValue>(
+      valueListenable: controller.waterController,
+      builder: (context, waterAmount, child) =>
+          ValueListenableBuilder<TextEditingValue>(
+        valueListenable: controller.coffeeController,
+        builder: (context, coffeeAmount, child) => ElevatedButton(
           child: Text(LocaleKeys.home_page_start_brew.tr),
-          onPressed: double.tryParse(controller.coffeeController.text) == 0.0 ||
-                  double.tryParse(controller.waterController.text) == 0.0
+          onPressed: double.tryParse(coffeeAmount.text) == 0.0 ||
+                  double.tryParse(waterAmount.text) == 0.0
               ? null
               : controller.navigateToTimerPage,
-        ));
+        ),
+      ),
+    );
   }
 
   Widget _item(String title, TextField textField, bool showGrams) {

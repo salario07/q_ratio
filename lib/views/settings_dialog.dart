@@ -76,11 +76,11 @@ class SettingsDialog extends GetView<HomePageController> {
     Get.back();
   }
 
-  void show(final BuildContext context) {
+  /*void show(final BuildContext context) {
     showDialog(
       context: context,
       builder: (context) => this,
       barrierDismissible: false,
     );
-  }
+  }*/
 }
